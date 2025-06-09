@@ -1,0 +1,330 @@
+/* General Styles for Login Page */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+    line-height: 1.6;
+    color: #1f2937; /* Tailwind gray-900 */
+}
+
+/* Login Container */
+.login-container {
+    background: linear-gradient(to bottom right, #eff6ff, #dbeafe); /* Tailwind blue-50 to blue-100 */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.forgot-password-container {
+    display: block;
+}
+
+.register-container {
+    display: block;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #4b5563; /* Tailwind gray-600 */
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #1f2937; /* Tailwind gray-900 */
+}
+
+/* Form Styles */
+#login-form, #forgot-password-form, #register-form {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b5563; /* Tailwind gray-600 */
+    margin-bottom: 4px;
+}
+
+.form-group label i {
+    margin-right: 8px;
+    color: #9ca3af; /* Tailwind gray-400 */
+}
+
+.form-group input {
+    padding: 12px 12px 12px 48px;
+    border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #1e3a8a; /* Tailwind blue-900 */
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+    outline: none;
+}
+
+.form-group .fa-envelope, .form-group .fa-lock, .form-group .fa-user {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af; /* Tailwind gray-400 */
+}
+
+/* Password Toggle */
+#toggle-password, #toggle-register-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280; /* Tailwind gray-500 */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#toggle-password:hover, #toggle-register-password:hover {
+    color: #1e3a8a; /* Tailwind blue-900 */
+}
+
+/* Error Messages */
+#login-email-error,
+#login-password-error,
+#forgot-email-error,
+#register-name-error,
+#register-email-error,
+#register-password-error {
+    margin-top: 4px;
+    color: #dc2626; /* Tailwind red-600 */
+    font-size: 12px;
+    display: none;
+}
+
+/* Checkbox and Forgot Password Link */
+#remember-me {
+    margin-right: 8px;
+}
+
+#login-form .flex {
+    justify-content: space-between;
+    align-items: center;
+}
+
+#login-form a, #forgot-password-form button, #register-form a {
+    color: #2563eb; /* Tailwind blue-600 */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#login-form a:hover, #forgot-password-form button:hover, #register-form a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #1e3a8a; /* Tailwind blue-900 */
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background-color: #1e40af; /* Tailwind blue-800 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Additional Text */
+#login-form p.text-center,
+#forgot-password-form p.text-center,
+#register-form p.text-center {
+    font-size: 14px;
+    color: #6b7280; /* Tailwind gray-500 */
+    margin-top: 16px;
+}
+
+/* Timestamp */
+.timestamp {
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af; /* Tailwind gray-400 */
+    margin-top: 8px;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from { transform: translateY(24px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Accessibility */
+button:focus, input:focus {
+    outline: 2px solid #1e3a8a; /* Tailwind blue-900 */
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .login-container {
+        padding: 24px;
+        max-width: 90%;
+    }
+
+    .close-btn {
+        top: 16px;
+        right: 16px;
+    }
+
+    .form-group input {
+        padding: 10px 10px 10px 40px;
+    }
+
+    .form-group .fa-envelope,
+    .form-group .fa-lock,
+    .form-group .fa-user,
+    #toggle-password,
+    #toggle-register-password {
+        left: 12px;
+    }
+
+    #toggle-password,
+    #toggle-register-password {
+        right: 8px;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+    }
+}
+
+/* Header and Footer Styles */
+header {
+    background-color: #1e3a8a; /* Tailwind blue-900 */
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+header a {
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+header a:hover {
+    color: #3b82f6; /* Tailwind blue-500 */
+    background-color: #1e40af; /* Tailwind blue-800 */
+    border-radius: 8px;
+}
+
+header nav ul li {
+    position: relative;
+    direction: none;
+    display: flex;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0.5rem 1rem;
+}
+
+header .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 1rem;
+}
+
+header input#searchInput {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+header input#searchInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+header button#searchBtn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280;
+    transition: color 0.2s ease;
+}
+
+header button#searchBtn:hover {
+    color: #3b82f6;
+}
+
+footer {
+    background-color: #1e3a8a;
+    color: #ffffff;
+}
+
+footer a {
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #3b82f6;
+    background-color: #1e40af;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+footer .fab {
+    transition: transform 0.2s ease;
+}
+
+footer .fab:hover {
+    transform: scale(1.3);
+}

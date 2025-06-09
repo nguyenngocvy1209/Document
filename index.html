@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyDocs - Mua và Bán Tài Liệu Học Tập</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6; /* Tailwind gray-100 */
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white py-4 sticky top-0 z-20 shadow-md">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold"><a href="/index.html" class="hover:text-blue-600 transition">StudyDocs</a></h1>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <div class="relative w-full sm:w-72 search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu..." class="px-4 py-2 rounded-full text-black w-full focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-label="Tìm kiếm tài liệu">
+                    <button id="searchBtn" class="absolute right-2 top-2 text-gray-500 hover:text-blue-600"><i class="fas fa-search"></i></button>
+                </div>
+                <nav aria-label="Main navigation">
+                    <ul class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-lg">
+                        <li><a href="#home" class="hover:underline hover:text-blue-600 transition">Trang chủ</a></li>
+                        <li><a href="/products.html" class="hover:underline hover:text-blue-600 transition">Sản phẩm</a></li>
+                        <li><a href="/cart.html" class="hover:underline relative hover:text-blue-600 transition">
+                            Giỏ hàng
+                            <span id="cart-count" class="cart-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
+                        </a></li>
+                        <li><a href="/wishlist.html" class="hover:underline relative hover:text-blue-600 transition">
+                            Yêu thích
+                            <span id="wishlist-count" class="wishlist-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
+                        </a></li>
+                        <li class="relative">
+                            <a href="#" id="user-greeting" class="hover:underline hover:text-blue-600 transition cursor-pointer">Tài khoản</a>
+                            <div id="account-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden">
+                                <!-- Dynamic content added by script.js -->
+                            </div>
+                        </li>
+                        <li><a href="#upload" class="hover:underline hover:text-blue-600 transition">Tải lên</a></li>
+                        <li><a href="#contact" class="hover:underline hover:text-blue-600 transition">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section h-96 flex items-center justify-center text-white bg-cover bg-center bg-fixed pt-16" style="background-image: url('https://marketplace.canva.com/EAFAUD7iGHY/1/0/1600w/canva-brown-aesthetic-study-vlog-youtube-thumbnail-bLXqXTEoJ2Y.jpg');">
+        <div class="text-center bg-black bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-4xl font-bold mb-4">Khám phá tài liệu học tập chất lượng</h2>
+            <p class="text-lg mb-6">Hàng ngàn tài liệu từ sinh viên và chuyên gia trên toàn quốc, sẵn sàng hỗ trợ bạn học tập hiệu quả.</p>
+            <a href="/products.html" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition">Khám phá ngay</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-blue-600">Về StudyDocs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-2">Sứ mệnh</h3>
+                    <p class="text-gray-600">Cung cấp nền tảng chia sẻ tài liệu học tập chất lượng, giúp sinh viên và giáo viên tiếp cận kiến thức dễ dàng.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-2">Tầm nhìn</h3>
+                    <p class="text-gray-600">Trở thành nền tảng học tập trực tuyến hàng đầu tại Việt Nam, kết nối cộng đồng học thuật toàn quốc.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-2">Giá trị cốt lõi</h3>
+                    <ul class="list-disc list-inside text-gray-600">
+                        <li>Chất lượng tài liệu được đảm bảo.</li>
+                        <li>Hỗ trợ cộng đồng học tập 24/7.</li>
+                        <li>Giá cả hợp lý, thanh toán linh hoạt.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Danh mục tài liệu</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-calculator text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Toán học</h3>
+                    <p class="text-sm text-gray-600 mb-2">Giải tích, Đại số, Xác suất...</p>
+                    <a href="/products.html?category=Toán học" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-code text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Lập trình</h3>
+                    <p class="text-sm text-gray-600 mb-2">Python, Java, C++...</p>
+                    <a href="/products.html?category=Lập trình" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-chart-line text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Kinh tế</h3>
+                    <p class="text-sm text-gray-600 mb-2">Quản trị, Kinh tế vĩ mô...</p>
+                    <a href="/products.html?category=Kinh tế" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-cogs text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Kỹ thuật</h3>
+                    <p class="text-sm text-gray-600 mb-2">Cơ khí, Điện tử...</p>
+                    <a href="/products.html?category=Kỹ thuật" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-language text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Ngôn ngữ học</h3>
+                    <p class="text-sm text-gray-600 mb-2">Ngữ pháp, Ngữ nghĩa học...</p>
+                    <a href="/products.html?category=Ngôn ngữ học" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+                <div class="category-card bg-white rounded-lg shadow p-6 text-center hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-briefcase text-3xl text-blue-600 mb-2"></i>
+                    <h3 class="text-lg font-bold mb-2">Quản trị kinh doanh</h3>
+                    <p class="text-sm text-gray-600 mb-2">Chiến lược, Marketing...</p>
+                    <a href="/products.html?category=Quản trị kinh doanh" class="text-blue-600 hover:underline">Xem tài liệu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured-products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center text-blue-600">Tài liệu nổi bật</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="featured-products-list"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Ý kiến từ người dùng</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 mb-4">"StudyDocs đã giúp tôi tìm được tài liệu chất lượng cao với giá hợp lý. Rất tiện lợi!"</p>
+                    <p class="font-bold">Nguyễn Văn A</p>
+                    <p class="text-sm text-gray-500">Sinh viên, Đại học Bách Khoa</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 mb-4">"Tôi đã kiếm thêm thu nhập bằng cách tải lên tài liệu của mình. Nền tảng rất dễ sử dụng."</p>
+                    <p class="font-bold">Trần Thị B</p>
+                    <p class="text-sm text-gray-500">Giảng viên, Đại học Kinh tế</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 mb-4">"Hỗ trợ nhanh chóng và tài liệu đa dạng, tôi rất hài lòng với StudyDocs!"</p>
+                    <p class="font-bold">Lê Minh C</p>
+                    <p class="text-sm text-gray-500">Sinh viên, Đại học Sư Phạm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Authors -->
+    <section id="authors" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Tác giả nổi bật</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg shadow text-center hover:shadow-lg transition">
+                    <img src="https://dimensions.edu.vn/public/upload/2025/01/meme-meo-doi-2.webp" alt="Tác giả 1" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="text-lg font-bold">TS. Nguyễn Văn Hùng</h3>
+                    <p class="text-sm text-gray-600">Chuyên gia Toán học</p>
+                    <p class="text-sm text-gray-500">100+ tài liệu được tải lên</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow text-center hover:shadow-lg transition">
+                    <img src="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/482552lNR/anh-mo-ta.png" alt="Tác giả 2" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="text-lg font-bold">PGS. Trần Thị Lan</h3>
+                    <p class="text-sm text-gray-600">Chuyên gia Kinh tế</p>
+                    <p class="text-sm text-gray-500">80+ tài liệu được tải lên</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow text-center hover:shadow-lg transition">
+                    <img src="https://cdn.tech24.vn/upload/tech24_vn/post/images/2024/06/03/555/om-meme-4.jpg" alt="Tác giả 3" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="text-lg font-bold">ThS. Lê Minh Tuấn</h3>
+                    <p class="text-sm text-gray-600">Chuyên gia Lập trình</p>
+                    <p class="text-sm text-gray-500">120+ tài liệu được tải lên</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow text-center hover:shadow-lg transition">
+                    <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/03/anh-meo-bua-50.jpg" alt="Tác giả 4" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="text-lg font-bold">TS. Phạm Thị Hồng</h3>
+                    <p class="text-sm text-gray-600">Chuyên gia Kỹ thuật</p>
+                    <p class="text-sm text-gray-500">90+ tài liệu được tải lên</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section id="recently-viewed" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Tài liệu đã xem gần đây</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="recently-viewed-list"></div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section id="promotions" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Ưu đãi đặc biệt</h2>
+            <p class="text-center text-gray-600 mb-4">Cập nhật lúc: 12:31 PM +07, Sunday, June 08, 2025</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:scale-105">
+                    <h3 class="text-lg font-bold mb-2">Combo Toán cao cấp</h3>
+                    <p class="text-gray-600 mb-2">Mua 3 tài liệu Toán, giảm 20%.</p>
+                    <p class="text-sm text-red-500">Hết hạn: 14/06/2025</p>
+                    <a href="/products.html?category=Toán học" class="text-blue-600 hover:underline mt-2 block">Xem chi tiết</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:scale-105">
+                    <h3 class="text-lg font-bold mb-2">Gói đồ án CNTT</h3>
+                    <p class="text-gray-600 mb-2">Mua bộ đồ án, tặng tài liệu Python.</p>
+                    <p class="text-sm text-red-500">Hết hạn: 15/06/2025</p>
+                    <a href="/products.html?category=Lập trình" class="text-blue-600 hover:underline mt-2 block">Xem chi tiết</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:scale-105">
+                    <h3 class="text-lg font-bold mb-2">Ưu đãi sinh viên</h3>
+                    <p class="text-gray-600 mb-2">Giảm 15% cho sinh viên với mã SV15.</p>
+                    <p class="text-sm text-red-500">Hết hạn: 12/06/2025</p>
+                    <a href="/products.html" class="text-blue-600 hover:underline mt-2 block">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile -->
+    <section id="profile" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Hồ sơ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-4 bg-white rounded-lg shadow">
+                    <h3 class="text-lg font-bold mb-2">Thông tin cá nhân</h3>
+                    <p id="profile-name" class="mb-2">Tên: Khách</p>
+                    <p id="profile-email" class="mb-2">Email: khach@example.com</p>
+                    <p id="profile-balance" class="mb-2">Số dư: 0 VNĐ</p>
+                    <button id="login-btn" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Đăng nhập</button>
+                    <button id="top-up-btn" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 mb-2 hidden">Nạp tiền</button>
+                    <button id="logout-btn" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 hidden">Đăng xuất</button>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow">
+                    <h3 class="text-lg font-bold mb-2">Lịch sử mua hàng</h3>
+                    <ul class="space-y-2" id="purchase-history">
+                        <li>Chưa có giao dịch nào.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow">
+                    <h3 class="text-lg font-bold mb-2">Tài liệu đã tải lên</h3>
+                    <ul class="space-y-2" id="uploaded-documents">
+                        <li>Chưa có tài liệu nào.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Document -->
+    <section id="upload" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Tải lên tài liệu</h2>
+            <form id="upload-form" class="max-w-lg mx-auto space-y-6">
+                <div class="form-group">
+                    <label for="upload-title" class="block text-sm font-medium text-gray-700">Tên tài liệu</label>
+                    <input type="text" id="upload-title" placeholder="Tên tài liệu" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true">
+                    <p id="upload-title-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập tên tài liệu</p>
+                </div>
+                <div class="form-group">
+                    <label for="upload-category" class="block text-sm font-medium text-gray-700">Danh mục</label>
+                    <select id="upload-category" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true">
+                        <option value="">Chọn danh mục</option>
+                        <option value="Toán học">Toán học</option>
+                        <option value="Lập trình">Lập trình</option>
+                        <option value="Kinh tế">Kinh tế</option>
+                        <option value="Kỹ thuật">Kỹ thuật</option>
+                        <option value="Khoa học dữ liệu">Khoa học dữ liệu</option>
+                        <option value="Vật lý">Vật lý</option>
+                        <option value="Thiết kế">Thiết kế</option>
+                        <option value="Hóa học">Hóa học</option>
+                        <option value="Ngôn ngữ học">Ngôn ngữ học</option>
+                        <option value="Quản trị kinh doanh">Quản trị kinh doanh</option>
+                    </select>
+                    <p id="upload-category-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng chọn danh mục</p>
+                </div>
+                <div class="form-group">
+                    <label for="upload-price" class="block text-sm font-medium text-gray-700">Giá (VNĐ)</label>
+                    <input type="number" id="upload-price" placeholder="Giá (VNĐ)" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true" min="0">
+                    <p id="upload-price-error" class="text-red-500 text-sm mt-1 hidden">Giá không hợp lệ</p>
+                </div>
+                <div class="form-group">
+                    <label for="upload-description" class="block text-sm font-medium text-gray-700">Mô tả tài liệu</label>
+                    <textarea id="upload-description" placeholder="Mô tả tài liệu" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" rows="4" aria-required="true"></textarea>
+                    <p id="upload-description-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập mô tả</p>
+                </div>
+                <div class="form-group">
+                    <label for="upload-file" class="block text-sm font-medium text-gray-700">Chọn file</label>
+                    <input type="file" id="upload-file" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true">
+                    <p id="upload-file-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng chọn file</p>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white py-3 px-4 w-full rounded-lg hover:bg-blue-700 transition font-medium">Tải lên</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Liên hệ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="text-center">
+                    <p class="mb-2"><i class="fas fa-envelope mr-2"></i>Email: support@studydocs.vn</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i>Hotline: +84 123 456 789</p>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Địa chỉ: 123 Đường Học Tập, Quận 1, TP.HCM</p>
+                    <p class="mt-2"><i class="fas fa-clock mr-2"></i>Thời gian làm việc: 8:00 - 22:00 (Thứ 2 - Chủ nhật)</p>
+                </div>
+                <form id="contact-form" class="space-y-6">
+                    <div class="form-group">
+                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Họ và tên</label>
+                        <input type="text" id="contact-name" placeholder="Họ và tên" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true">
+                        <p id="contact-name-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập họ và tên</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="contact-email" placeholder="Email" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true">
+                        <p id="contact-email-error" class="text-red-500 text-sm mt-1 hidden">Email không hợp lệ</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message" class="block text-sm font-medium text-gray-700">Tin nhắn</label>
+                        <textarea id="contact-message" placeholder="Tin nhắn" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" rows="5" aria-required="true"></textarea>
+                        <p id="contact-message-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập tin nhắn</p>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white py-3 px-4 w-full rounded-lg hover:bg-blue-700 transition font-medium">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <dialog id="product-detail-modal" class="modal rounded-lg shadow-lg p-0 max-w-3xl w-full">
+        <div class="modal-content bg-white p-6">
+            <button data-action="close-product-detail" class="close-btn absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="flex flex-col sm:flex-row gap-6">
+                <img id="product-detail-image" src="" alt="" class="w-full sm:w-1/2 h-64 object-cover rounded-lg">
+                <div class="flex-1">
+                    <h2 id="product-detail-title" class="text-2xl font-bold mb-2"></h2>
+                    <p id="product-detail-price" class="text-lg text-blue-600 mb-2"></p>
+                    <p id="product-detail-category" class="text-sm text-gray-600 mb-2"></p>
+                    <p id="product-detail-rating" class="text-sm text-yellow-500 mb-2"></p>
+                    <p id="product-detail-stock" class="text-sm text-gray-600 mb-2"></p>
+                    <p id="description-text" class="text-gray-700 mb-4"></p>
+                    <div class="flex gap-2">
+                        <button type="button" id="add-to-cart-btn" class="bg-blue-600 text-white py-2 px-2 rounded-lg hover:bg-blue-700 transition">Thêm vào giỏ</button>
+                        <button type="button" id="add-to-wishlist-btn" class="bg-yellow-600 text-white py-2 px-2 rounded-lg hover:bg-blue-700 transition">Thêm vào yêu thích</button>
+                        <button type="button" id="buy-now-btn" class="bg-green-600 text-white py-2 px-2 rounded-lg hover:bg-green-700 transition">Mua ngay</button>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-lg font-bold mt-6 mb-2">Đánh giá</h3>
+            <ul id="product-detail-reviews" class="list-disc pl-5 mb-4"></ul>
+            <form id="review-form" class="space-y-4">
+                <textarea id="review-text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" rows="3" placeholder="Viết đánh giá của bạn..." aria-required="true"></textarea>
+                <p id="review-error-text" class="text-red-500 text-sm hidden">Vui lòng nhập nội dung đánh giá.</p>
+                <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Gửi đánh giá</button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Top Up Modal -->
+    <dialog id="top-up-modal" class="modal rounded-lg shadow-lg p-0 max-w-md w-full">
+        <div class="modal-content bg-white p-6">
+            <button type="button" data-action="close-top-up" class="close-btn absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-bold mb-4 text-center text-blue-600">Nạp tiền</h2>
+            <form id="top-up-form" class="space-y-6">
+                <div class="form-group">
+                    <label for="top-up-amount" class="block text-sm font-medium text-gray-700">Số tiền (VNĐ)</label>
+                    <input type="number" id="top-up-amount" placeholder="0" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true" min="10000">
+                    <p id="top-up-error" class="text-red-500 text-sm mt-1 hidden">Số tiền tối thiểu 10,000 VNĐ</p>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white py-3 px-4 w-full rounded-lg hover:bg-blue-700 transition font-medium">Nạp tiền</button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">StudyDocs</h3>
+                    <p class="text-sm mb-4">Nền tảng cung cấp tài liệu học tập chất lượng cao cho sinh viên và giáo viên.</p>
+                    <p class="text-sm">Email: support@studydocs.vn</p>
+                    <p class="text-sm">Hotline: +84 123 456 789</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
+                    <a href="#home" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Trang chủ</a>
+                    <a href="/products.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Sản phẩm</a>
+                    <a href="#upload" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Tải lên tài liệu</a>
+                    <a href="#contact" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Liên hệ</a>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Hỗ trợ</h3>
+                    <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Câu hỏi thường gặp</a>
+                    <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Chính sách bảo mật</a>
+                    <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Điều khoản sử dụng</a>
+                    <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Hướng dẫn thanh toán</a>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Theo dõi chúng tôi</h3>
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-sm">© 2025 StudyDocs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

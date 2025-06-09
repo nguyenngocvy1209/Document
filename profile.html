@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ người dùng - StudyDocs</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/7a4b2e4e6b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><a href="/index.html">StudyDocs</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Trang chủ</a></li>
+                    <li><a href="/products.html">Tài liệu</a></li>
+                    <li><a href="/cart.html">Giỏ hàng <span id="cart-count" class="cart-count hidden">0</span></a></li>
+                    <li><a href="/wishlist.html">Yêu thích <span id="wishlist-count" class="wishlist-count hidden">0</span></a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="relative">
+                <a href="#" id="user-greeting">Tài khoản</a>
+                <div id="account-dropdown" class="hidden">
+                    <!-- Dropdown content populated by JS -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-12">
+        <h2 class="section-title">Hồ sơ người dùng</h2>
+        <section id="profile-section" class="bg-white rounded-lg shadow-md p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-900 mb-4">Thông tin cá nhân</h3>
+                    <p id="profile-name" class="mb-2"></p>
+                    <p id="profile-email" class="mb-2"></p>
+                    <p id="profile-balance" class="mb-4"></p>
+                    <div class="flex gap-4">
+                        <button id="edit-profile-btn" class="btn bg-blue-600 hover:bg-blue-700">Chỉnh sửa hồ sơ</button>
+                        <button id="top-up-btn" class="btn bg-green-600 hover:bg-green-700">Nạp tiền</button>
+                        <button id="logout-btn" class="btn bg-red-600 hover:bg-red-700">Đăng xuất</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-900 mb-4">Lịch sử mua hàng</h3>
+                    <ul id="purchase-history" class="list-none"></ul>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold text-blue-900 mb-4">Tài liệu đã tải lên</h3>
+                <ul id="uploaded-documents" class="list-none"></ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Top-up Modal -->
+    <dialog id="top-up-modal" class="modal">
+        <div class="modal-content relative">
+            <button class="close-btn" data-action="close-top-up">&times;</button>
+            <h2 class="text-xl font-semibold text-blue-900 mb-4">Nạp tiền</h2>
+            <form id="top-up-form">
+                <div class="form-group">
+                    <label for="top-up-amount">Số tiền (VNĐ):</label>
+                    <input type="number" id="top-up-amount" min="10000" required>
+                    <p id="top-up-error" class="error hidden"></p>
+                </div>
+                <button type="submit" class="btn w-full">Nạp tiền</button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Edit Profile Modal -->
+    <dialog id="edit-profile-modal" class="modal">
+        <div class="modal-content relative">
+            <button class="close-btn" data-action="close-edit-profile">&times;</button>
+            <h2 class="text-xl font-semibold text-blue-900 mb-4">Chỉnh sửa hồ sơ</h2>
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="edit-name">Họ và tên:</label>
+                    <input type="text" id="edit-name" required>
+                    <p id="edit-name-error" class="error hidden"></p>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email:</label>
+                    <input type="email" id="edit-email" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="edit-password">Mật khẩu mới (để trống nếu không đổi):</label>
+                    <input type="password" id="edit-password">
+                    <p id="edit-password-error" class="error hidden"></p>
+                </div>
+                <button type="submit" class="btn w-full">Cập nhật</button>
+            </form>
+        </div>
+    </dialog>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StudyDocs</h3>
+                <p>Địa chỉ: 123 Đường Láng, Hà Nội</p>
+                <p>Email: support@studydocs.vn</p>
+                <p>Hotline: 0123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết nhanh</h3>
+                <a href="/index.html">Trang chủ</a>
+                <a href="/products.html">Tài liệu</a>
+                <a href="/cart.html">Giỏ hàng</a>
+                <a href="/profile.html">Hồ sơ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Hỗ trợ</h3>
+                <a href="/faq.html">FAQ</a>
+                <a href="/contact.html">Liên hệ</a>
+                <a href="/terms.html">Điều khoản</a>
+                <a href="/privacy.html">Chính sách bảo mật</a>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyDocs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
