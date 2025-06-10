@@ -4,136 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hồ sơ người dùng - StudyDocs</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
-    <script src="https://kit.fontawesome.com/7a4b2e4e6b.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <header>
-        <div class="header-content">
-            <h1><a href="/index.html">StudyDocs</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="/index.html">Trang chủ</a></li>
-                    <li><a href="/products.html">Tài liệu</a></li>
-                    <li><a href="/cart.html">Giỏ hàng <span id="cart-count" class="cart-count hidden">0</span></a></li>
-                    <li><a href="/wishlist.html">Yêu thích <span id="wishlist-count" class="wishlist-count hidden">0</span></a></li>
-                </ul>
-            </nav>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu...">
-                <button id="searchBtn"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="relative">
-                <a href="#" id="user-greeting">Tài khoản</a>
-                <div id="account-dropdown" class="hidden">
-                    <!-- Dropdown content populated by JS -->
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white py-4 sticky top-0 z-20 shadow-md">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold"><a href="/index.html" class="hover:text-blue-600 transition">StudyDocs</a></h1>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <div class="relative w-full sm:w-72 search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu..." class="px-4 py-2 rounded-full text-black w-full focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-label="Tìm kiếm tài liệu">
+                    <button id="searchBtn" class="absolute right-2 top-2 text-gray-500 hover:text-blue-600"><i class="fas fa-search"></i></button>
                 </div>
+                <nav aria-label="Main navigation">
+                    <ul class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-lg">
+                        <li><a href="/index.html" class="hover:underline hover:text-blue-600 transition">Trang chủ</a></li>
+                        <li><a href="/products.html" class="hover:underline hover:text-blue-600 transition">Tài liệu</a></li>
+                        <li><a href="/cart.html" class="hover:underline relative hover:text-blue-600 transition">
+                            Giỏ hàng
+                            <span id="cart-count" class="cart-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
+                        </a></li>
+                        <li class="relative">
+                            <a href="#" id="user-greeting" class="hover:underline hover:text-blue-600 transition cursor-pointer">Tài khoản</a>
+                            <div id="account-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden">
+                                <!-- Dropdown content populated by JS -->
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
 
-    <main class="container py-12">
-        <h2 class="section-title">Hồ sơ người dùng</h2>
+    <!-- Main Content -->
+    <main class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8 text-blue-600">Hồ sơ người dùng</h2>
         <section id="profile-section" class="bg-white rounded-lg shadow-md p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h3 class="text-xl font-semibold text-blue-900 mb-4">Thông tin cá nhân</h3>
-                    <p id="profile-name" class="mb-2"></p>
-                    <p id="profile-email" class="mb-2"></p>
-                    <p id="profile-balance" class="mb-4"></p>
+                    <p id="profile-name" class="mb-2 text-gray-700"></p>
+                    <p id="profile-email" class="mb-2 text-gray-700"></p>
+                    <p id="profile-balance" class="mb-4 text-gray-700"></p>
                     <div class="flex gap-4">
-                        <button id="edit-profile-btn" class="btn bg-blue-600 hover:bg-blue-700">Chỉnh sửa hồ sơ</button>
-                        <button id="top-up-btn" class="btn bg-green-600 hover:bg-green-700">Nạp tiền</button>
-                        <button id="logout-btn" class="btn bg-red-600 hover:bg-red-700">Đăng xuất</button>
+                        <button id="edit-profile-btn" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Chỉnh sửa hồ sơ</button>
+                        <button id="top-up-btn" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">Nạp tiền</button>
+                        <button id="logout-btn" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition">Đăng xuất</button>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold text-blue-900 mb-4">Lịch sử mua hàng</h3>
-                    <ul id="purchase-history" class="list-none"></ul>
+                    <ul id="purchase-history" class="list-none space-y-2"></ul>
                 </div>
             </div>
             <div class="mt-8">
-                <h3 class="text-xl font-semibold text-blue-900 mb-4">Tài liệu đã tải lên</h3>
-                <ul id="uploaded-documents" class="list-none"></ul>
+                <h3 class="text-xl font-semibold text-blue-900 mb-4">Đăng tài liệu mới</h3>
+                <form id="upload-document-form" class="space-y-4">
+                    <div class="form-group">
+                        <label for="document-title" class="block text-sm font-medium text-gray-700">Tiêu đề tài liệu</label>
+                        <input type="text" id="document-title" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" required>
+                        <p id="document-title-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập tiêu đề tài liệu</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="document-category" class="block text-sm font-medium text-gray-700">Danh mục</label>
+                        <select id="document-category" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" required>
+                            <option value="">Chọn danh mục</option>
+                            <option value="Toán học">Toán học</option>
+                            <option value="Lập trình">Lập trình</option>
+                            <option value="Kinh tế">Kinh tế</option>
+                            <option value="Kỹ thuật">Kỹ thuật</option>
+                            <option value="Ngôn ngữ học">Ngôn ngữ học</option>
+                            <option value="Quản trị kinh doanh">Quản trị kinh doanh</option>
+                        </select>
+                        <p id="document-category-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng chọn danh mục</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="document-price" class="block text-sm font-medium text-gray-700">Giá (VNĐ)</label>
+                        <input type="number" id="document-price" min="0" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" required>
+                        <p id="document-price-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập giá hợp lệ</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="document-description" class="block text-sm font-medium text-gray-700">Mô tả</label>
+                        <textarea id="document-description" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" rows="4"></textarea>
+                        <p id="document-description-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập mô tả</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="document-file" class="block text-sm font-medium text-gray-700">Tệp tài liệu</label>
+                        <input type="file" id="document-file" accept=".pdf,.doc,.docx" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" required>
+                        <p id="document-file-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng chọn tệp tài liệu</p>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition w-full">Đăng tài liệu</button>
+                </form>
             </div>
         </section>
     </main>
 
     <!-- Top-up Modal -->
-    <dialog id="top-up-modal" class="modal">
-        <div class="modal-content relative">
-            <button class="close-btn" data-action="close-top-up">&times;</button>
-            <h2 class="text-xl font-semibold text-blue-900 mb-4">Nạp tiền</h2>
-            <form id="top-up-form">
+    <dialog id="top-up-modal" class="modal rounded-lg shadow-lg p-0 max-w-md w-full">
+        <div class="modal-content bg-white p-6">
+            <button type="button" data-action="close-top-up" class="close-btn absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-bold mb-4 text-center text-blue-600">Nạp tiền</h2>
+            <form id="top-up-form" class="space-y-6">
                 <div class="form-group">
-                    <label for="top-up-amount">Số tiền (VNĐ):</label>
-                    <input type="number" id="top-up-amount" min="10000" required>
-                    <p id="top-up-error" class="error hidden"></p>
+                    <label for="top-up-amount" class="block text-sm font-medium text-gray-700">Số tiền (VNĐ)</label>
+                    <input type="number" id="top-up-amount" placeholder="0" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true" min="10000">
+                    <p id="top-up-error" class="text-red-500 text-sm mt-1 hidden">Số tiền tối thiểu 10,000 VNĐ</p>
                 </div>
-                <button type="submit" class="btn w-full">Nạp tiền</button>
+                <button type="submit" class="bg-blue-600 text-white py-3 px-4 w-full rounded-lg hover:bg-blue-700 transition font-medium">Nạp tiền</button>
             </form>
         </div>
-    </dialog>
+    </div>
 
     <!-- Edit Profile Modal -->
-    <dialog id="edit-profile-modal" class="modal">
-        <div class="modal-content relative">
-            <button class="close-btn" data-action="close-edit-profile">&times;</button>
-            <h2 class="text-xl font-semibold text-blue-900 mb-4">Chỉnh sửa hồ sơ</h2>
-            <form id="edit-profile-form">
+    <dialog id="edit-profile-modal" class="modal rounded-lg shadow-lg p-0 max-w-md w-full">
+        <div class="modal-content bg-white p-6">
+            <button type="button" data-action="close-edit-profile" class="close-btn absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-bold mb-4 text-center text-blue-600">Chỉnh sửa hồ sơ</h2>
+            <form id="edit-profile-form" class="space-y-6">
                 <div class="form-group">
-                    <label for="edit-name">Họ và tên:</label>
-                    <input type="text" id="edit-name" required>
-                    <p id="edit-name-error" class="error hidden"></p>
+                    <label for="edit-name" class="block text-sm font-medium text-gray-700">Họ và tên</label>
+                    <input type="text" id="edit-name" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" required>
+                    <p id="edit-name-error" class="text-red-500 text-sm mt-1 hidden">Vui lòng nhập họ và tên</p>
                 </div>
                 <div class="form-group">
-                    <label for="edit-email">Email:</label>
-                    <input type="email" id="edit-email" disabled>
+                    <label for="edit-email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="edit-email" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="edit-password">Mật khẩu mới (để trống nếu không đổi):</label>
-                    <input type="password" id="edit-password">
-                    <p id="edit-password-error" class="error hidden"></p>
+                    <label for="edit-password" class="block text-sm font-medium text-gray-700">Mật khẩu mới (để trống nếu không đổi)</label>
+                    <input type="password" id="edit-password" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition">
+                    <p id="edit-password-error" class="text-red-500 text-sm mt-1 hidden">Mật khẩu phải có ít nhất 6 ký tự</p>
                 </div>
-                <button type="submit" class="btn w-full">Cập nhật</button>
+                <button type="submit" class="bg-blue-600 text-white py-3 px-4 w-full rounded-lg hover:bg-blue-700 transition font-medium">Cập nhật</button>
             </form>
         </div>
     </dialog>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>StudyDocs</h3>
-                <p>Địa chỉ: 123 Đường Láng, Hà Nội</p>
-                <p>Email: support@studydocs.vn</p>
-                <p>Hotline: 0123 456 789</p>
-            </div>
-            <div class="footer-section">
-                <h3>Liên kết nhanh</h3>
-                <a href="/index.html">Trang chủ</a>
-                <a href="/products.html">Tài liệu</a>
-                <a href="/cart.html">Giỏ hàng</a>
-                <a href="/profile.html">Hồ sơ</a>
-            </div>
-            <div class="footer-section">
-                <h3>Hỗ trợ</h3>
-                <a href="/faq.html">FAQ</a>
-                <a href="/contact.html">Liên hệ</a>
-                <a href="/terms.html">Điều khoản</a>
-                <a href="/privacy.html">Chính sách bảo mật</a>
-            </div>
-            <div class="footer-section">
-                <h3>Theo dõi chúng tôi</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">StudyDocs</h3>
+                    <p class="text-sm mb-4">Nền tảng cung cấp tài liệu học tập chất lượng cao cho sinh viên và giáo viên.</p>
+                    <p class="text-sm">Email: support@studydocs.vn</p>
+                    <p class="text-sm">Hotline: +84 123 456 789</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
+                    <a href="/index.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Trang chủ</a>
+                    <a href="/products.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Tài liệu</a>
+                    <a href="/cart.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Giỏ hàng</a>
+                    <a href="/profile.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Hồ sơ</a>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Hỗ trợ</h3>
+                    <a href="/faq.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Câu hỏi thường gặp</a>
+                    <a href="/contact.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Liên hệ</a>
+                    <a href="/terms.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Điều khoản sử dụng</a>
+                    <a href="/privacy.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Chính sách bảo mật</a>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Theo dõi chúng tôi</h3>
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 StudyDocs. All rights reserved.</p>
+            <p class="text-center mt-8 text-sm">© 2025 StudyDocs. All rights reserved.</p>
         </div>
     </footer>
 

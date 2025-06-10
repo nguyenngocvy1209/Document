@@ -26,17 +26,12 @@
                             Giỏ hàng
                             <span id="cart-count" class="cart-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
                         </a></li>
-                        <li><a href="/wishlist.html" class="hover:underline relative hover:text-blue-600 transition">
-                            Yêu thích
-                            <span id="wishlist-count" class="wishlist-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
-                        </a></li>
                         <li class="relative">
                             <a href="#" id="user-greeting" class="hover:underline hover:text-blue-600 transition cursor-pointer">Tài khoản</a>
                             <div id="account-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden">
                                 <!-- Dynamic content added by script.js -->
                             </div>
                         </li>
-                        <li><a href="/index.html#upload" class="hover:underline hover:text-blue-600 transition">Tải lên</a></li>
                         <li><a href="/index.html#contact" class="hover:underline hover:text-blue-600 transition">Liên hệ</a></li>
                     </ul>
                 </nav>
@@ -45,13 +40,13 @@
     </header>
 
     <!-- Main Content -->
-    <main class="py-0">
+    <main class="py-8">
         <!-- Discount Banner -->
-        <section id="discount-banner" class="relative bg-cover bg-center h-80 flex items-center justify-center text-center hidden slide-in-banner" style="background-image: url('https://www.shutterstock.com/image-vector/shopping-sale-banner-on-red-260nw-1575804547.jpg');">
+        <section id="discount-banner" class="relative bg-cover bg-center h-80 flex items-center justify-center text-center slide-in-banner" style="background-image: url('https://www.shutterstock.com/image-vector/shopping-sale-banner-on-red-260nw-1575804547.jpg');">
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 container mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Giảm giá 20% cho tất cả tài liệu!</h2>
-                <a href="#products-list" class="btn discount-cta">Mua ngay!</a>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Giá 20% cho tất cả tài liệu!</h2>
+                <a href="#discounted-products" class="btn bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Mua ngay!</a>
                 <button data-action="close-banner" class="absolute top-4 right-4 text-white hover:text-gray-300 transition">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
@@ -59,42 +54,50 @@
         </section>
 
         <div class="container mx-auto px-4">
+            <!-- Discounted Products Section -->
+            <section id="discounted-products" class="py-8">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">Sản phẩm giảm giá</h2>
+                <div id="discounted-products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Discounted products rendered by JavaScript -->
+                </div>
+            </section>
+
             <!-- Products List -->
-            <section>
+            <section id="products">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
-                    <h2 class="section-title">Tất cả sản phẩm</h2>
+                    <h2 class="text-3xl font-bold text-blue-600 mb-4 sm:mb-0">Tất cả sản phẩm</h2>
                     <div class="flex gap-4">
-                        <select id="sort-select" class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition">
-                            <option value="default">Mặc định</option>
-                            <option value="price-asc">Giá: Thấp đến cao</option>
-                            <option value="price-desc">Giá: Cao đến thấp</option>
+                        <select id="sort-select" class="px-4 py-2 border rounded-4 px-lg py-2">
+                            <option value="default">Mặc định giá</option>
+                            <option value="price-asc">Giá: thấp đến cao</option>
+                            <option value="price-desc">Giá: cao đến thấp</option>
                             <option value="rating-desc">Đánh giá cao</option>
                         </select>
                     </div>
                 </div>
-                <div id="category-filter" class="flex flex-wrap gap-2 mb-6">
-                    <button class="category-btn px-4 py-2 rounded-lg bg-blue-900 text-white transition active" data-category="all">Tất cả</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Kinh tế">Kinh tế</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Lập trình">Lập trình</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Toán học">Toán học</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Kỹ thuật">Kỹ thuật</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Khoa học dữ liệu">Khoa học dữ liệu</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Vật lý">Vật lý</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Thiết kế">Thiết kế</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Hóa học">Hóa học</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Ngôn ngữ học">Ngôn ngữ học</button>
-                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-category="Quản trị kinh doanh">Quản trị kinh doanh</button>
+                <div id="category-sidebar" class="flex flex-wrap gap-2 mb-6">
+                    <button class="category-btn px-4 py-2 rounded-lg bg-blue-600 text-white transition active" data-action="category" data-category="all">Tất cả</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Kinh tế">Kinh tế</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Lập trình">Lập trình</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Toán">Toán học</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Kỹ thuật">Kỹ thuật</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Khoa học dữ liệu">Khoa học dữ liệu số liệu</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Vật lý">Vật lý</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Thiết kế">Thiết kế</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Hóa học">Hóa học</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Ngôn ngữ học">Ngôn ngữ học</button>
+                    <button class="category-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-800 transition" data-action="category" data-btn category="Quản trị kinh doanh">Quản trị kinh doanh</button>
                 </div>
-                <div id="products-list" class="products-grid">
+                <div id="products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Products rendered by script.js -->
                 </div>
-                <button id="load-more" class="btn hidden">Tải thêm</button>
+                <button id="load-more" class="btn bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition mx-auto block mt-6 hidden">Tải thêm</button>
             </section>
 
             <!-- Product Detail Modal -->
             <dialog id="product-detail-modal" class="modal rounded-lg shadow-lg p-0 max-w-3xl w-full">
                 <div class="modal-content bg-white p-6">
-                    <button data-action="close-product-detail" class="close-btn">
+                    <button data-action="close-product-detail" class="absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                     <div class="flex flex-col md:flex-row gap-6">
@@ -107,9 +110,8 @@
                             <p id="product-detail-stock" class="text-sm text-gray-600 mb-2"></p>
                             <p id="description-text" class="text-gray-700 mb-4"></p>
                             <div class="flex gap-2">
-                                <button id="add-to-cart-btn" class="btn add-to-cart">Thêm vào giỏ</button>
-                                <button id="add-to-wishlist-btn" class="btn add-to-wishlist">Yêu thích</button>
-                                <button id="buy-now-btn" class="btn buy-now">Mua ngay</button>
+                                <button id="add-to-cart-btn" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Thêm vào giỏ</button>
+                                <button id="buy-now-btn" class="btn bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Mua ngay</button>
                             </div>
                         </div>
                     </div>
@@ -117,8 +119,8 @@
                     <ul id="product-detail-reviews" class="list-disc pl-5 mb-4"></ul>
                     <form id="review-form" class="space-y-4">
                         <textarea id="review-text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" rows="3" placeholder="Viết đánh giá của bạn..."></textarea>
-                        <p id="review-error-text" class="error hidden">Vui lòng nhập nội dung đánh giá</p>
-                        <button type="submit" class="btn">Gửi đánh giá</button>
+                        <p id="review-error-text" class="text-red-500 text-sm hidden">Vui lòng nhập nội dung đánh giá</p>
+                        <button type="submit" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Gửi đánh giá</button>
                     </form>
                 </div>
             </dialog>
@@ -126,15 +128,18 @@
             <!-- Top Up Modal -->
             <dialog id="top-up-modal" class="modal rounded-lg shadow-lg p-0 max-w-md w-full">
                 <div class="modal-content bg-white p-6">
-                    <button data-action="close-top-up" class="close-btn"><i class="fas fa-times"></i></button>
-                    <h2 class="section-title">Nạp tiền</h2>
+                    <button data-action="close-top-up" class="absolute right-4 top-4 text-gray-600 hover:text-blue-600 transition"><i class="fas fa-times text-xl"></i></button>
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600">Nạp tiền</h2>
                     <form id="top-up-form" class="space-y-6 w-full">
                         <div class="form-group">
-                            <label for="top-up-amount" class="block text-sm font-medium text-gray-700">Số tiền (VNĐ)</label>
-                            <input type="number" id="top-up-amount" placeholder="0" class="mt-1 w-full px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true" min="10000">
-                            <p id="top-up-error" class="error hidden">Số tiền tối thiểu 10,000 VNĐ</p>
+                            <label for="top-up-amount" class="block text-sm font-medium text-gray-700 mb-1 flex items-center"><i class="fas fa-money-bill-wave mr-2"></i>Số tiền (VNĐ)</label>
+                            <input type="number" id="top-up-amount" placeholder="Nhập số tiền (tối thiểu 10,000)" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition" aria-required="true" min="10000" step="1000">
+                            <p id="top-up-error" class="text-red-500 text-sm mt-1 hidden">Số tiền tối thiểu 10,000 VNĐ</p>
                         </div>
-                        <button type="submit" class="btn">Nạp tiền</button>
+                        <div class="flex justify-end gap-2">
+                            <button type="button" class="btn bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition" data-action="close-top-up">Hủy</button>
+                            <button type="submit" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Nạp tiền</button>
+                        </div>
                     </form>
                 </div>
             </dialog>
@@ -155,19 +160,18 @@
                     <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
                     <a href="/index.html#home" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Trang chủ</a>
                     <a href="/products.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Sản phẩm</a>
-                    <a href="/index.html#upload" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Tải lên tài liệu</a>
                     <a href="/index.html#contact" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Liên hệ</a>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Hỗ trợ</h3>
-                    <a href="#qa" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Câu hỏi thường gặp</a>
+                    <a href="/index.html#qa" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Câu hỏi thường gặp</a>
                     <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Chính sách bảo mật</a>
                     <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Điều khoản sử dụng</a>
                     <a href="#" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Hướng dẫn thanh toán</a>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Theo dõi chúng tôi</h3>
-                    <div class="social-icons flex gap-4 justify-center md:justify-start">
+                    <div class="flex gap-4 justify-center md:justify-start">
                         <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="text-2xl hover:text-blue-600 transition"><i class="fab fa-instagram"></i></a>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyDocs - Chi tiết sản phẩm</title>
+    <title>Chi tiết tài liệu - StudyDocs</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header -->
@@ -21,7 +21,7 @@
                 <nav aria-label="Main navigation">
                     <ul class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-lg">
                         <li><a href="/index.html" class="hover:underline hover:text-blue-600 transition">Trang chủ</a></li>
-                        <li><a href="/products.html" class="hover:underline hover:text-blue-600 transition">Sản phẩm</a></li>
+                        <li><a href="/products.html" class="hover:underline hover:text-blue-600 transition">Tài liệu</a></li>
                         <li><a href="/cart.html" class="hover:underline relative hover:text-blue-600 transition">
                             Giỏ hàng
                             <span id="cart-count" class="cart-count bg-white text-blue-700 rounded-full w-5 h-5 flex items-center justify-center text-xs hidden">0</span>
@@ -29,61 +29,39 @@
                         <li class="relative">
                             <a href="#" id="user-greeting" class="hover:underline hover:text-blue-600 transition cursor-pointer">Tài khoản</a>
                             <div id="account-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden">
-                                <!-- Dynamic content -->
+                                <!-- Dropdown content populated by JS -->
                             </div>
                         </li>
-                        <li><a href="/contact.html" class="hover:underline hover:text-blue-600 transition">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Breadcrumb -->
-    <section class="bg-gray-200 py-4">
-        <div class="container mx-auto px-4">
-            <nav aria-label="Breadcrumb">
-                <ol class="flex gap-2 text-sm text-gray-600">
-                    <li><a href="/index.html" class="hover:underline">:
-Trang chủ </a></li>
-                    <li>/</li>
-                    <li><a href="/products.html" class="hover:underline">Sản phẩm</a></li>
-                    <li>/</li>
-                    <li id="product-breadcrumb-product" class="text-gray-800"></li>
-                </ol>
-            </nav>
-        </div>
-    </section>
-
-    <!-- Product Details -->
-    <section id="product-details" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <!-- Content populated by JavaScript -->
-        </div>
-    </section>
-
-    <!-- Preview Carousel -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center">Xem trước tài liệu</h2>
-            <div class="relative">
-                <div class="slider overflow-hidden">
-                    <div class="slides flex transition-transform duration-500 ease-in-out" id="preview-product-carousel">
-                        <!-- Populated by JS -->
-                    </div>
+    <!-- Main Content -->
+    <main class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8 text-blue-600">Chi tiết tài liệu</h2>
+        <section id="product-detail-section" class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex flex-col md:flex-row gap-6">
+                <img id="product-image" src="https://via.placeholder.com/300" alt="Product Image" class="w-full md:w-1/3 h-64 object-cover rounded-lg">
+                <div class="flex-1">
+                    <h3 id="product-title" class="text-2xl font-semibold text-blue-900 mb-2"></h3>
+                    <p id="product-price" class="text-red-500 font-medium text-lg mb-2"></p>
+                    <p id="product-category" class="text-gray-600 mb-2"></p>
+                    <p id="product-rating" class="text-yellow-500 mb-2"></p>
+                    <p id="product-stock" class="text-gray-600 mb-4"></p>
+                    <p id="product-description" class="text-gray-700 mb-4"></p>
+                    <a id="download-btn" href="#" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition inline-block">
+                        <i class="fas fa-download mr-2"></i>Tải xuống tài liệu
+                    </a>
                 </div>
-                <button class="slider-btn prev absolute top-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 bg-blue-600 rounded-lg hover:bg-blue-700" aria-label="Slide trước">❮</button>
-                <button class="slider-btn next absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700" aria-label="Slide sau">❯</button>
             </div>
-        </div>
-    <!-- Related Products -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center">Tài liệu liên quan</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="related-products"></div>
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold text-blue-900 mb-4">Đánh giá</h3>
+                <ul id="product-reviews" class="list-disc pl-5 text-gray-700"></ul>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-12">
@@ -91,14 +69,14 @@ Trang chủ </a></li>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-lg font-bold mb-4">StudyDocs</h3>
-                    <p class="text-sm mb-4">Nền tảng cung cấp tài liệu học tập chất lượng cao.</p>
+                    <p class="text-sm mb-4">Nền tảng cung cấp tài liệu học tập chất lượng cao cho sinh viên và giáo viên.</p>
                     <p class="text-sm">Email: support@studydocs.vn</p>
-                    <p class="text-sm">Hotline: +84 123 456 6789</p>
+                    <p class="text-sm">Hotline: +84 123 456 789</p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h5>
+                    <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
                     <a href="/index.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Trang chủ</a>
-                    <a href="/products.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Sản phẩm</a>
+                    <a href="/products.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Tài liệu</a>
                     <a href="/cart.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Giỏ hàng</a>
                     <a href="/profile.html" class="block hover:underline text-sm mb-2 hover:text-blue-600 transition">Hồ sơ</a>
                 </div>

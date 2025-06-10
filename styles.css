@@ -1015,15 +1015,7 @@ label {
 }
 
 /* Animations */
-@keyframes slide-in {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slide-out {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(100%); opacity: 0; }
-}
+.animate-slide-in {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -1208,4 +1200,5 @@ label {
   #product-detail-price {
     font-size: 1.125rem;
   }
+}
 }
